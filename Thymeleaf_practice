@@ -1,0 +1,74 @@
+package in.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class PracticeThymeleaf1Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(PracticeThymeleaf1Application.class, args);
+		
+		       // first open spring starter project 
+				// add dependency spring web and thymeleaf dependancy and main.in name added
+				//Then create html file create in template go to file -new file-file and name it 
+		     // then create controller in main 
+	     	// then go to html file  "<html xmlns:th="http://www.thymeleaf.org">" this line in html file 
+            // if we added this code then only we access thymeleaf
+		   // then create head tag in html and also add "<!DOCTYPE html>" this for version 
+		// the create unordered list and list
+		// then go to controller class for we created html file that we show ing web page we add @Controller in controller class
+		 // Then add @GetMapping ("/Welcome") when only we read web page help with this url
+		// then add public String welcomepage  in controller for m.addAttribute("title","This is my Thymeleaf page"); if we add in controller we html page laiym paklam
+		// in this controller page "title" name is variable we call in html th:text=${variable name }
+		// Here "title" variable we can use multiple times at any where we want 
+		// here m.attributes import in util pakages
+		//then save and run this program in main page
+		// the go to chrome browers -and localhsot-run this probgram
+		// Rules: once we altered in attribule we first  save and run in main page or rerun progame after we only run in local host
+	}
+
+}
+
+
+
+package in.main.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+ 
+@Controller
+//Used When intergrate html pages with java -Thymeleaf
+public class EmployeeController {
+@GetMapping("/Welcome")
+public String welcomepage(Model m) {
+	//Model class to connect java based code with html
+	m.addAttribute("title","This is my Thymeleaf page");
+	m.addAttribute("item",List.of("Springboovicet-Thymeleaf","Repository","Service"));
+	return "webpage";
+	// this is html file name .
+}
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	    <title th:text="${title}">Spring Boot Thymeleaf</title>
+		
+	</head>
+	
+	<body>
+	    <h1 th:text="${title}">Placeholder Text</h1>
+		<ul> 
+			<li th:each="item:${item}" th:text="${item}"></li>
+		</ul>
+	</body>
+	</html>
+
+
+
+}
+
