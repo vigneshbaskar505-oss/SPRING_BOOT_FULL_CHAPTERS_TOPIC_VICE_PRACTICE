@@ -1,0 +1,75 @@
+package in.main;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class TaskThymeleafLoginAndFormApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(TaskThymeleafLoginAndFormApplication.class, args);
+		 // first open spring starter project 
+		// add dependency spring web and thymeleaf dependancy and main.in name added
+		//Then create html file create in template go to file -new file-file and name it 
+     // then create controller in main 
+ 	// then go to html file  "<html xmlns:th="http://www.thymeleaf.org">" this line in html file 
+    // if we added this code then only we access thymeleaf
+	}
+
+}
+package in.main.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class EmployeeController {
+	@GetMapping("/Welcome")
+ public String Welcomemypage(Model v) {
+	 v.addAttribute("title","Fill The Form");
+		return "form";
+ }
+	
+	
+	@GetMapping("/Well")
+	public String Welcomes(Model d) {
+		d.addAttribute("title","Fill The Form");
+		return "login";
+	}
+}
+ā<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<head>
+	<title th:text="${title}">Fill Form</title>
+</head>
+<body>
+	<form >
+		<lable>Name</lable>
+		 <input type="text" name="name" placeholder="Enter Name">
+		<br></br>
+		<lable>Email</lable>
+		 <input type="mail" mail="mail" placeholder="Enter mail id">
+		
+	</form>
+</body>
+</html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+
+<head>
+	<titleth:text="${title}">Log in</title>
+</head>
+<body>
+	<form >
+		
+		<lable>Password</lable>
+		<input type="password" name="Password" placeholder="Enter Your Password">
+         		<br></br>
+		<button>Submit</button>
+	</form>
+</body>
+</html>
